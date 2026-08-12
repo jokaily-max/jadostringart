@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>See it on your wall · Jado String Art</title>
+<meta name="description" content="Place a handmade circular string art piece on your own wall, at true size, using a phone. No app needed.">
+<meta name="theme-color" content="#f4f2ed">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script type="module" src="vendor/model-viewer.min.js"></script>
+<style>
+  :root{
+    --paper:#f4f2ed; --ink:#1a1a1e; --ink-soft:#5a5a64; --rule:#d9d5cc;
+    --accent:#1f5fa8; --lav:#b39ddb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:22px 18px 40px}
+  .mark{font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:600}
+  h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;
+    font-size:clamp(30px,7vw,46px);line-height:1.08;margin:.30em 0 .18em}
+  .lede{color:var(--ink-soft);font-size:15px;line-height:1.55;margin:0 0 18px;max-width:46ch}
+  .stage{position:relative;border:1px solid var(--rule);border-radius:14px;
+    background:#fbfaf7;overflow:hidden}
+  model-viewer{width:100%;height:min(62vh,470px);background:#fbfaf7;--poster-color:transparent}
+  .tag{position:absolute;top:10px;left:12px;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 6px}
+  button.pick{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;
+    border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;
+    transition:border-color .15s,background .15s}
+  button.pick[aria-pressed="true"]{border-color:var(--accent);background:#eaf1fa;color:var(--accent)}
+  .hint{font-size:13px;color:var(--ink-soft);margin:10px 0 0;line-height:1.5}
+  .ar-btn{display:inline-block;margin-top:14px;font:inherit;font-size:15px;font-weight:600;
+    padding:14px 22px;border-radius:999px;border:0;background:var(--accent);color:#fff;
+    cursor:pointer;width:100%;max-width:340px}
+  .ar-btn[hidden]{display:none}
+  .steps{margin:22px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+  .steps li{padding:13px 0 0;border-bottom:1px solid var(--rule);padding-bottom:13px;
+    font-size:14px;color:var(--ink-soft);line-height:1.5}
+  .steps b{color:var(--ink);font-weight:600}
+  footer{margin-top:26px;font-size:13px;color:var(--ink-soft)}
+  footer a{color:var(--accent);text-decoration:none;font-weight:600}
+  .desktop-note{font-size:13px;color:var(--ink-soft);margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">Jado String Art</div>
+  <h1>See it on your wall</h1>
+  <p class="lede">Point a phone at an empty wall and the piece appears there at its real size. Nothing to install. Sizes can be swapped before choosing one.</p>
+
+  <div class="stage">
+    <span class="tag" id="tag">Lilac Vortex · 76 cm</span>
+    <model-viewer id="mv"
+      src="assets/lilac76.glb"
+      ios-src="assets/lilac76.usdz"
+      alt="Lilac Vortex, a 76 cm handmade circular string art piece in purple thread"
+      ar ar-modes="webxr scene-viewer quick-look"
+      ar-placement="wall" ar-scale="fixed"
+      camera-controls
+      interaction-prompt="none"
+      shadow-intensity="0.9" shadow-softness="0.9"
+      environment-image="neutral"
+      camera-orbit="0deg 90deg auto"
+      min-camera-orbit="-55deg 62deg auto" max-camera-orbit="55deg 118deg auto"
+      exposure="1.05">
+      <button slot="ar-button" class="ar-btn" id="arbtn">View it on your wall</button>
+    </model-viewer>
+  </div>
+
+  <div class="row" role="group" aria-label="Choose what to place on the wall">
+    <button class="pick" data-glb="assets/lilac76.glb" data-usdz="assets/lilac76.usdz"
+      data-label="Lilac Vortex · 76 cm" aria-pressed="true">Lilac Vortex, 76 cm</button>
+    <button class="pick" data-glb="assets/ghost60.glb" data-usdz="assets/ghost60.usdz"
+      data-label="Size guide · 60 cm" aria-pressed="false">60 cm guide</button>
+    <button class="pick" data-glb="assets/ghost80.glb" data-usdz="assets/ghost80.usdz"
+      data-label="Size guide · 80 cm" aria-pressed="false">80 cm guide</button>
+    <button class="pick" data-glb="assets/ghost100.glb" data-usdz="assets/ghost100.usdz"
+      data-label="Size guide · 100 cm" aria-pressed="false">100 cm guide</button>
+  </div>
+  <p class="hint">The three guides are plain rings. They answer one question only: which diameter suits the wall.</p>
+
+  <p class="desktop-note" id="desknote" hidden>On a computer the piece can be turned and inspected. The wall view needs a phone, so open this page there.</p>
+
+  <ul class="steps">
+    <li><b>Stand back about two metres</b> from a clear wall.</li>
+    <li><b>Move the phone slowly</b> across the wall so the camera can read the surface.</li>
+    <li><b>Tap the wall</b> to hang the piece, then walk closer.</li>
+    <li><b>Sizes are true.</b> Nothing is scaled to flatter the work.</li>
+  </ul>
+
+  <footer>
+    Made in Beirut. <a href="https://jadostringart.com">jadostringart.com</a>
+  </footer>
+</div>
+
+<script>
+  const mv = document.getElementById('mv');
+  const tag = document.getElementById('tag');
+  const picks = document.querySelectorAll('button.pick');
+  picks.forEach(b => b.addEventListener('click', () => {
+    picks.forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+    mv.setAttribute('src', b.dataset.glb);
+    mv.setAttribute('ios-src', b.dataset.usdz);
+    tag.textContent = b.dataset.label;
+  }));
+  // Show the desktop note only where AR is genuinely unavailable.
+  mv.addEventListener('load', () => {
+    if (!mv.canActivateAR) document.getElementById('desknote').hidden = false;
+  });
+</script>
+</body>
+</html>
