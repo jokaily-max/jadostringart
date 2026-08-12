@@ -88,6 +88,9 @@ section{padding:clamp(5rem,11vw,10rem) 0}
    re-adds a fixed 5.75rem (92px), so every heading lands 92px from the top at any width:
    nav island ends at ~68px, leaving ~24px of clearance. Negative values are valid here. */
 section[id]{scroll-margin-top:calc(5.75rem - clamp(5rem,11vw,10rem))}
+/* Anchors that are NOT sections have no section padding to cancel, so they take
+   the plain 92px. Used by #enquire, which parks the form itself under the nav. */
+#enquire{scroll-margin-top:5.75rem}
 
 /* ---------- floating island nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:center;pointer-events:none}
@@ -182,7 +185,13 @@ h2 em{font-style:italic;color:#6E5EA0}
 .artistpix{display:grid;grid-template-columns:1fr;gap:clamp(.9rem,2vw,1.4rem)}
 .artistpix > .shell:last-child{width:52%;justify-self:end}
 @media (max-width:820px){.artistpix > .shell:last-child{width:64%}}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+/* Anchor landing fix 2, 2026-08-12 (Jad). The picture column is taller than the
+   text column, and align-items:center pushed the heading well below the top of
+   the section while the portrait stayed at the top. Clicking "The Artist" then
+   landed on the portrait with the heading far underneath. align-items:start puts
+   the eyebrow and the portrait on the same top line, so the anchor lands on the
+   heading exactly like every other section. */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
 .facts{margin-top:2.6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .fact{padding:1.2rem 0;border-top:1px solid rgba(24,24,28,.13)}
 .fact b{display:block;font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:400;line-height:1}
@@ -350,7 +359,7 @@ footer a:hover{color:var(--paper)}
   <a href="#work" data-spy="work">Works</a>
   <a href="#story" data-spy="story"><span class="full">The Artist</span><span class="mini">Artist</span></a>
   <a href="catalogue.html">Catalogue</a>
-  <a class="cta" href="#order" data-spy="order">Enquire</a>
+  <a class="cta" href="#enquire" data-spy="order">Enquire</a>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
@@ -429,7 +438,10 @@ footer a:hover{color:var(--paper)}
       <div class="step rv"><i>02</i><b>Proposal</b><p>A quotation for the work, with freight to your country quoted separately, and a timeline for completion.</p></div>
       <div class="step rv"><i>03</i><b>Creation</b><p>Progress images throughout the winding, then packing, freight and delivery to your door.</p></div>
     </div>
-    <form class="enq rv" method="POST" action="https://api.web3forms.com/submit">
+    <!-- The scroll-reveal class was removed from this form on purpose. The nav
+         "Enquire" button now jumps straight here, and a reveal would land the
+         visitor on an element that is still invisible for about a second. -->
+    <form class="enq" id="enquire" method="POST" action="https://api.web3forms.com/submit">
       <input type="hidden" name="access_key" value="c89b9b9e-bf75-4994-af6b-9ecef0954abd">
       <input type="hidden" name="subject" value="New enquiry from jadostringart.com">
       <input type="hidden" name="from_name" value="Jado String Art website">
