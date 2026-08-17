@@ -168,6 +168,15 @@ h1 em{font-style:italic;color:var(--lav)}
 .tall .core{aspect-ratio:3/4}
 .sq .core{aspect-ratio:1}
 .wide .core{aspect-ratio:16/10}
+/* Works grid, 2026-08-17 (Jad): every tile the same size, all square, two across.
+   LANDMINE, found this session: the three rules directly above are DESCENDANT
+   selectors, but tall/sq/wide sit on the same element as .core, so they have
+   never matched anything anywhere on this site. Every tile was simply taking
+   its source image's own shape, which is why the works grid was ragged. They
+   are left unrepaired on purpose: rewriting them to .core.tall would silently
+   resize the hero, the artist pictures and the catalogue at the same time.
+   The rule below is scoped to the works grid and nothing else. */
+#work .grid .core{aspect-ratio:1}
 figcaption{
   display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
   padding:.85rem .5rem 0; font-size:.79rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
@@ -399,26 +408,26 @@ footer a:hover{color:var(--paper)}
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow dark">Selected works</span>
-      <h2>Works that <em>found walls</em>.</h2>
+      <h2>Works from the <em>studio</em>.</h2>
       <p class="sub">Each work is wound entirely by hand around nails set into the frame of a panel. A single-colour work is one unbroken thread from the first nail to the last; every additional colour adds a thread. Size, shape, palette and frame finish are determined at commission.</p>
     </div>
     <div class="grid">
-      <figure class="c7 rv"><div class="shell"><div class="core wide"><img loading="lazy" decoding="async" src="img/g1.jpg" alt="Yellow starburst string art on purple"></div></div>
-        <figcaption><b>Solar Bloom</b><span class="sold">Private collection</span></figcaption></figure>
-      <figure class="c5 rv"><div class="shell"><div class="core wide"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple and amber mandala string art"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g1.jpg" alt="Yellow starburst string art on purple"></div></div>
+        <figcaption><b>Solar Bloom</b><span class="sold">98 cm &middot; Private collection</span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple and amber mandala string art"></div></div>
         <figcaption><b>Purple Dawn</b><span class="sold">98 cm &middot; Artist's collection</span></figcaption></figure>
-      <figure class="c5 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g3.jpg" alt="Dense monochrome silver string art"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g3.jpg" alt="Dense monochrome silver string art"></div></div>
         <figcaption><b>Interstellar</b><span class="sold">85 cm &middot; Private collection</span></figcaption></figure>
-      <figure class="c7 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g4.jpg" alt="Deep green string art"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g4.jpg" alt="Deep green string art"></div></div>
         <figcaption><b>Emerald Ripple</b><span class="sold">120 cm &middot; Private collection</span></figcaption></figure>
-      <figure class="c4 rv"><div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/g5.jpg" alt="Lilac Vortex, all-purple string art"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g5.jpg" alt="Lilac Vortex, all-purple string art"></div></div>
         <figcaption><b>Lilac Vortex</b><span class="sold">76 cm &middot; Available</span></figcaption></figure>
-      <figure class="c4 rv"><div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/g6.jpg" alt="Blue petal-pattern string art"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g6.jpg" alt="Blue petal-pattern string art"></div></div>
         <figcaption><b>Blue Meridian</b><span class="sold">75 cm &middot; Private collection</span></figcaption></figure>
-      <figure class="c4 rv"><div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
         <figcaption><b>Jungle Halo</b><span class="sold">63 cm &middot; Available</span></figcaption></figure>
-      <figure class="c4 rv"><div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/room.jpg" alt="Emerald Ripple hanging in a Beirut interior"></div></div>
-        <figcaption><b>Emerald Ripple</b><span class="sold">Installed &middot; Beirut</span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g8.jpg" alt="Cosmic Spiral, string art in burgundy, blue, orange and white"></div></div>
+        <figcaption><b>Cosmic Spiral</b><span class="sold">75 cm &middot; Private collection</span></figcaption></figure>
     </div>
   </div>
 </section>
