@@ -182,9 +182,18 @@ h2 em{font-style:italic;color:#6E5EA0}
 
 /* ---------- story ---------- */
 .story{background:var(--paper-2)}
-.artistpix{display:grid;grid-template-columns:1fr;gap:clamp(.9rem,2vw,1.4rem)}
-.artistpix > .shell:last-child{width:52%;justify-self:end}
-@media (max-width:820px){.artistpix > .shell:last-child{width:64%}}
+/* Meet the Artist pictures, rebuilt 2026-08-13 (Jad: headshot at its original
+   size, the green shot level beside it on the right, same size, no overlap).
+   Two 540 px frames do not fit next to a text column, so the section stops
+   being a side-by-side split on desktop: the words sit above and the two
+   pictures run the full measure underneath, one beside the other. That keeps
+   the headshot at 531 px wide, which is the size it had before. Both source
+   files are near 3/4 portraits, so the 3/4 frame crops almost nothing. */
+.artistpix{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,2vw,1.4rem);align-items:start}
+.artistpix > .shell:first-child,
+.artistpix > .shell:last-child{width:100%;justify-self:auto;margin:0}
+.artistpix > .shell .core{aspect-ratio:3/4}
+@media (max-width:700px){.artistpix{grid-template-columns:1fr}}
 /* Anchor landing fix 2, 2026-08-12 (Jad). The picture column is taller than the
    text column, and align-items:center pushed the heading well below the top of
    the section while the portrait stayed at the top. Clicking "The Artist" then
@@ -192,6 +201,14 @@ h2 em{font-style:italic;color:#6E5EA0}
    the eyebrow and the portrait on the same top line, so the anchor lands on the
    heading exactly like every other section. */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+/* The story section is the exception: words on top, pictures full measure
+   beneath, so the two photographs can stay at full size side by side. */
+.story .split{grid-template-columns:1fr;gap:clamp(2.4rem,5vw,3.6rem)}
+/* Hold the reading line at a sane measure, but let the three facts run the
+   full width so they read as a spec bar above the photographs. */
+.story .split > .rv:first-child > h2,
+.story .split > .rv:first-child > .sub,
+.story .split > .rv:first-child > blockquote{max-width:64ch}
 .facts{margin-top:2.6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .fact{padding:1.2rem 0;border-top:1px solid rgba(24,24,28,.13)}
 .fact b{display:block;font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:400;line-height:1}

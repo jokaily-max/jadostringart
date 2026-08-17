@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>See it on your wall · Jado String Art</title>
-<meta name="description" content="Place a handmade circular string art piece on your own wall, at true size, using a phone. No app needed.">
+<meta name="description" content="Place a handmade string art piece on your own wall, at true size, using a phone. Nails only on the frame. No app needed.">
 <meta name="theme-color" content="#f4f2ed">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,10 @@
     --accent:#1f5fa8; --lav:#b39ddb;
   }
   *{box-sizing:border-box}
+  /* .row sets display:flex, which beats the browser's own rule for the hidden
+     attribute. Without this line the private scale check would show to every
+     visitor. Keep it. */
+  [hidden]{display:none !important}
   html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
     font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -35,6 +39,8 @@
     border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;
     transition:border-color .15s,background .15s}
   button.pick[aria-pressed="true"]{border-color:var(--accent);background:#eaf1fa;color:var(--accent)}
+  button.pick.check{border-style:dashed;border-color:#b0aaa0}
+  button.pick.check[aria-pressed="true"]{border-style:solid}
   .hint{font-size:13px;color:var(--ink-soft);margin:10px 0 0;line-height:1.5}
   .ar-btn{display:inline-block;margin-top:14px;font:inherit;font-size:15px;font-weight:600;
     padding:14px 22px;border-radius:999px;border:0;background:var(--accent);color:#fff;
@@ -60,7 +66,7 @@
     <model-viewer id="mv"
       src="assets/lilac76.glb"
       ios-src="assets/lilac76.usdz"
-      alt="Lilac Vortex, a 76 cm handmade circular string art piece in purple thread"
+      alt="Lilac Vortex, a 76 cm handmade string art piece in purple thread, nails only on the frame"
       ar ar-modes="webxr scene-viewer quick-look"
       ar-placement="wall" ar-scale="fixed"
       camera-controls
@@ -84,13 +90,24 @@
     <button class="pick" data-glb="assets/ghost100.glb" data-usdz="assets/ghost100.usdz"
       data-label="Size guide · 100 cm" aria-pressed="false">100 cm guide</button>
   </div>
-  <p class="hint">The three guides are plain rings. They answer one question only: which diameter suits the wall.</p>
+  <p class="hint">The three guides are plain rings. They answer one question only: which size suits the wall.</p>
+
+  <!-- PRIVATE SCALE CHECK. Hidden from every visitor.
+       It only appears when the address ends in ?check , that is
+       https://jadostringart.com/ar/wall.html?check
+       Nobody reaches it by clicking. It exists so Jad can prove whether a wrong
+       size comes from the model or from the phone. See AR/README.md. -->
+  <div class="row" id="checkrow" role="group" aria-label="Scale check" hidden>
+    <button class="pick check" data-glb="assets/a4.glb" data-usdz="assets/a4.usdz"
+      data-label="Scale check · A4 sheet" aria-pressed="false">Scale check, A4</button>
+  </div>
 
   <p class="desktop-note" id="desknote" hidden>On a computer the piece can be turned and inspected. The wall view needs a phone, so open this page there.</p>
 
   <ul class="steps">
-    <li><b>Stand back about two metres</b> from a clear wall.</li>
-    <li><b>Move the phone slowly</b> across the wall so the camera can read the surface.</li>
+    <li><b>Pick a wall with something on it.</b> A door, a window or a piece of furniture in view is enough. A camera reads an empty wall poorly.</li>
+    <li><b>Stand back about two metres.</b></li>
+    <li><b>Move the phone slowly across the wall</b> for a few seconds, so the camera can read the surface.</li>
     <li><b>Tap the wall</b> to hang the piece, then walk closer.</li>
     <li><b>Sizes are true.</b> Nothing is scaled to flatter the work.</li>
   </ul>
@@ -110,6 +127,10 @@
     mv.setAttribute('ios-src', b.dataset.usdz);
     tag.textContent = b.dataset.label;
   }));
+  // The scale check is private. It appears only for an address ending in ?check
+  if (/(^|[?&])check\b/.test(location.search)) {
+    document.getElementById('checkrow').hidden = false;
+  }
   // Show the desktop note only where AR is genuinely unavailable.
   mv.addEventListener('load', () => {
     if (!mv.canActivateAR) document.getElementById('desknote').hidden = false;
