@@ -1,0 +1,95 @@
+# Catalogue PDF robot
+# Every time catalogue.html or a picture changes, this prints the live catalogue
+# page to jado-catalogue.pdf and saves it back to the site. Nobody touches the PDF.
+# It can also be started by hand: Actions tab, "Catalogue PDF", Run workflow.
+
+name: Catalogue PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'catalogue.html'
+      - 'img/**'
+      - '.github/workflows/catalogue-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: catalogue-pdf
+  cancel-in-progress: true
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install a headless browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.47.2
+          npx playwright install --with-deps chromium
+
+      - name: Print the catalogue to PDF
+        run: |
+          python3 -m http.server 8080 >/dev/null 2>&1 &
+          sleep 2
+          cat > print-pdf.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch();
+          const page = await browser.newPage({ viewport: { width: 1200, height: 1600 } });
+          await page.goto('http://localhost:8080/catalogue.html', { waitUntil: 'networkidle' });
+          // Show every block and force every picture to load before printing.
+          await page.evaluate(async () => {
+            document.querySelectorAll('.rv').forEach(e => e.classList.add('in'));
+            const imgs = [...document.querySelectorAll('img')];
+            imgs.forEach(i => { i.loading = 'eager'; });
+            window.scrollTo(0, document.body.scrollHeight);
+            const wait = i => i.complete && i.naturalWidth ? null
+              : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 15000); });
+            await Promise.all(imgs.map(wait));
+            if (document.fonts) await document.fonts.ready;
+            window.scrollTo(0, 0);
+          });
+          await page.emulateMedia({ media: 'print' });
+          const stamp = new Date().toLocaleDateString('en-GB',
+            { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Beirut' });
+          await page.pdf({
+            path: 'jado-catalogue.pdf',
+            format: 'A4',
+            printBackground: true,
+            margin: { top: '14mm', bottom: '16mm', left: '12mm', right: '12mm' },
+            displayHeaderFooter: true,
+            headerTemplate: '<span></span>',
+            footerTemplate:
+              '<div style="width:100%;padding:0 12mm;display:flex;justify-content:space-between;' +
+              'font-family:Georgia,serif;font-size:8px;color:#8a857c">' +
+              '<span>Jado String Art, jadostringart.com</span>' +
+              '<span>Updated ' + stamp + ', page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>'
+          });
+          await browser.close();
+          EOF
+          node print-pdf.mjs
+          ls -la jado-catalogue.pdf
+
+      - name: Save the PDF to the site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jado-catalogue.pdf
+          if git diff --staged --quiet; then echo "PDF unchanged"; exit 0; fi
+          git commit -m "Refresh catalogue PDF"
+          git push
+
+      - name: Ask GitHub Pages to publish it
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

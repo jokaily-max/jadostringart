@@ -24,8 +24,8 @@
     {"@type":"ListItem","position":5,"item":{"@type":"VisualArtwork","name":"Interstellar","artform":"String art","dateCreated":"2025","width":{"@type":"QuantitativeValue","value":85,"unitCode":"CMT"},"artMedium":"White thread","image":"https://jadostringart.com/img/g3.jpg","creator":{"@id":"https://jadostringart.com/#artist"}}},
     {"@type":"ListItem","position":6,"item":{"@type":"VisualArtwork","name":"Emerald Ripple","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":120,"unitCode":"CMT"},"artMedium":"Emerald thread","image":"https://jadostringart.com/img/g4.jpg","creator":{"@id":"https://jadostringart.com/#artist"}}},
     {"@type":"ListItem","position":7,"item":{"@type":"VisualArtwork","name":"Eye of the Forest","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":86,"unitCode":"CMT"},"artMedium":"Emerald thread","image":"https://jadostringart.com/img/p7_main.jpg","creator":{"@id":"https://jadostringart.com/#artist"}}},
-    {"@type":"ListItem","position":8,"item":{"@type":"VisualArtwork","name":"Lilac Vortex","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":76,"unitCode":"CMT"},"artMedium":"Violet thread","image":"https://jadostringart.com/img/g5.jpg","creator":{"@id":"https://jadostringart.com/#artist"},"offers":{"@type":"Offer","price":"200","priceCurrency":"USD","availability":"https://schema.org/InStock"}}},
-    {"@type":"ListItem","position":9,"item":{"@type":"VisualArtwork","name":"Jungle Halo","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":63,"unitCode":"CMT"},"artMedium":"Thread in shades of green","image":"https://jadostringart.com/img/p9_main.jpg","creator":{"@id":"https://jadostringart.com/#artist"},"offers":{"@type":"Offer","price":"300","priceCurrency":"USD","availability":"https://schema.org/InStock"}}}
+    {"@type":"ListItem","position":8,"item":{"@type":"VisualArtwork","name":"Lilac Vortex","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":76,"unitCode":"CMT"},"artMedium":"Violet thread","image":"https://jadostringart.com/img/g5.jpg","creator":{"@id":"https://jadostringart.com/#artist"}}},
+    {"@type":"ListItem","position":9,"item":{"@type":"VisualArtwork","name":"Jungle Halo","artform":"String art","dateCreated":"2026","width":{"@type":"QuantitativeValue","value":63,"unitCode":"CMT"},"artMedium":"Thread in shades of green","image":"https://jadostringart.com/img/p9_main.jpg","creator":{"@id":"https://jadostringart.com/#artist"}}}
   ]
 }
 </script>
@@ -100,12 +100,12 @@ h1{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.4rem,5
 dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.6rem;border-top:1px solid rgba(24,24,28,.13);padding-top:1.2rem}
 dt{font-family:var(--label);font-weight:600;font-size:15px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
 dd{font-size:1rem}
-.pricenote{padding:clamp(2.5rem,5vw,4rem) 0 clamp(1rem,3vw,2rem)}
-.pricenote .wrap{max-width:62ch}
-.pricenote p{font-size:.95rem;line-height:1.75;color:var(--muted);margin:0 0 1rem}
-.pricenote b{color:var(--ink);font-weight:600}
-.pricenote a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(24,24,28,.3);padding-bottom:2px}
-.pricenote a:hover{border-color:var(--ink)}
+.commnote{padding:clamp(2.5rem,5vw,4rem) 0 clamp(1rem,3vw,2rem)}
+.commnote .wrap{max-width:62ch}
+.commnote p{font-size:.95rem;line-height:1.75;color:var(--muted);margin:0 0 1rem}
+.commnote b{color:var(--ink);font-weight:600}
+.commnote a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(24,24,28,.3);padding-bottom:2px}
+.commnote a:hover{border-color:var(--ink)}
 footer{background:var(--ink);color:rgba(253,251,247,.45);padding:clamp(3rem,6vw,4.5rem) 0;font-size:.8rem;letter-spacing:.08em}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem 1.6rem;flex-wrap:wrap}
 footer a{color:rgba(253,251,247,.7);text-decoration:none}
@@ -173,7 +173,15 @@ footer a:hover{color:var(--paper)}
   .island a.mark{font-size:.76rem;padding:.44rem .56rem}
   .island .sep{display:none}
 }
-@media print{body{font-size:12px}.rv{opacity:1;transform:none}.w{break-inside:avoid;page-break-inside:avoid;gap:1.2rem}
+.pdfdl{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.6rem;padding:.72rem 1.35rem;
+ border:1px solid rgba(24,24,28,.22);border-radius:999px;text-decoration:none;color:var(--ink);
+ font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;font-weight:400;
+ transition:background .5s var(--ease),border-color .5s var(--ease)}
+.pdfdl:hover{background:rgba(24,24,28,.06);border-color:rgba(24,24,28,.4)}
+.pdfdl svg{width:.85rem;height:.85rem;flex:0 0 auto}
+.commnote a.pdfdl{margin-top:.2rem;padding:.72rem 1.35rem;border:1px solid rgba(24,24,28,.22)}
+.commnote a.pdfdl:hover{border-color:rgba(24,24,28,.4)}
+@media print{body{font-size:12px}.pdfdl{display:none}.rv{opacity:1;transform:none}.w{break-inside:avoid;page-break-inside:avoid;gap:1.2rem}
  .thumbs{display:none} nav{display:none} .lb{display:none} .arline{display:none}
  footer{background:none;color:#000} footer a{color:#000;border:0} header.top{padding:1.5rem 0}}
 </style></head><body>
@@ -192,6 +200,7 @@ footer a:hover{color:var(--paper)}
   <span class="eyebrow">Catalogue of works</span>
   <h1>Every piece,<br>in order.</h1>
   <p class="intro">A record of works made in the Beirut studio. Each is wound entirely by hand around nails set into the frame of a panel, with nothing placed inside it.</p>
+  <a class="pdfdl" href="jado-catalogue.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg>Download the catalogue</a>
 </div></header>
 
 <main class="works"><div class="wrap" style="display:flex;flex-direction:column;gap:inherit">
@@ -208,7 +217,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>75 cm</dd>
             <dt>Thread</dt><dd>Blue</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $350</dd>
             
           </dl>
         </div>
@@ -226,7 +234,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>75 cm</dd>
             <dt>Thread</dt><dd>Burgundy, blue, orange, green, white</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $350</dd>
             
           </dl>
         </div>
@@ -244,7 +251,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>98 cm</dd>
             <dt>Thread</dt><dd>White, five shades of yellow, orange red, purple, blue</dd>
             <dt>Status</dt><dd>Artist's collection</dd>
-            <dt>Commission</dt><dd>From $600</dd>
           </dl>
         </div>
       </article>
@@ -261,7 +267,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>98 cm</dd>
             <dt>Thread</dt><dd>White and five shades of yellow</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $600</dd>
             
           </dl>
         </div>
@@ -279,7 +284,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>85 cm</dd>
             <dt>Thread</dt><dd>White</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $150</dd>
             
           </dl>
         </div>
@@ -297,7 +301,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>120 cm</dd>
             <dt>Thread</dt><dd>Emerald</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $300</dd>
             
           </dl>
         </div>
@@ -315,7 +318,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>86 cm</dd>
             <dt>Thread</dt><dd>Emerald</dd>
             <dt>Status</dt><dd>Private collection</dd>
-            <dt>Commission</dt><dd>From $150</dd>
             
           </dl>
         </div>
@@ -333,7 +335,6 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>76 cm</dd>
             <dt>Thread</dt><dd>Violet</dd>
             <dt>Status</dt><dd>Available</dd>
-            <dt>Price</dt><dd>$200</dd>
           </dl>
 
           <!-- AR BUTTON, SWITCHED OFF UNTIL THE PHONE TEST PASSES.
@@ -361,14 +362,14 @@ footer a:hover{color:var(--paper)}
             <dt>Size</dt><dd>63 cm</dd>
             <dt>Thread</dt><dd>Shades of green, on a deep burgundy frame</dd>
             <dt>Status</dt><dd>Available</dd>
-            <dt>Price</dt><dd>$300</dd>
           </dl>
         </div>
       </article>
 </div></main>
-<section class="pricenote"><div class="wrap">
-  <p><b>About these prices.</b> Each figure is the starting price for the size shown, wound in the colours shown, on a plain frame. Larger sizes, extra layers, colour changes and decorated frames are quoted individually. Every design here can be commissioned in any size, including the works held in collections. Shipping is quoted separately and confirmed in writing before work begins.</p>
+<section class="commnote"><div class="wrap">
+  <p><b>Commissions.</b> Every design here can be commissioned in any size and in any colours, including the works held in collections. Each commission is quoted individually, with shipping confirmed in writing before work begins.</p>
   <p><a href="index.html#enquire">Ask for a quote</a></p>
+  <p><a class="pdfdl" href="jado-catalogue.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg>Download the catalogue</a></p>
 </div></section>
 
 
