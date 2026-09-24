@@ -54,7 +54,8 @@
         "@type": "PostalAddress",
         "addressLocality": "Beirut",
         "addressCountry": "LB"
-      }
+      },
+      "priceRange": "$$"
     }
   ]
 }
@@ -182,6 +183,10 @@ figcaption{
 }
 figcaption b{font-weight:600;color:var(--ink);font-family:var(--label);font-size:1.42rem;letter-spacing:.13em}
 .sold{color:var(--muted)}
+/* STATUS LINE, HIDDEN 2026-09-22 on Jad's instruction. The text is still in the
+   markup. To bring every status back, delete the ONE rule on the next line. */
+.statusrow{display:none}
+
 
 h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.05;letter-spacing:-.015em}
 h2 em{font-style:italic;color:#6E5EA0}
@@ -212,6 +217,14 @@ h2 em{font-style:italic;color:#6E5EA0}
 /* The story section is the exception: words on top, pictures full measure
    beneath, so the two photographs can stay at full size side by side. */
 .story .split{grid-template-columns:1fr;gap:clamp(2.4rem,5vw,3.6rem)}
+/* 2026-09-24 (Jad): text on the left, both pictures on the right, half and half.
+   The portrait sits first, the photo of Jad holding a piece is furthest right.
+   Below 1000 px it falls back to words on top, pictures underneath. */
+@media (min-width:1000px){
+  .story .split{grid-template-columns:1fr 1fr;align-items:start}
+}
+/* The holding photo is wider than 3/4; anchor it right so the whole piece stays in frame. */
+.artistpix img[src$="maker_og.jpg"]{object-position:right center}
 /* Hold the reading line at a sane measure, but let the three facts run the
    full width so they read as a spec bar above the photographs. */
 .story .split > .rv:first-child > h2,
@@ -294,6 +307,22 @@ footer a{color:rgba(253,251,247,.7);text-decoration:none}
 footer a:hover{color:var(--paper)}
 
 
+.pricing{background:var(--paper)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem}
+.pcard{padding:.45rem;border-radius:var(--shell);background:rgba(24,24,28,.045);border:1px solid rgba(24,24,28,.07)}
+.pcard>*{position:relative}
+.pcard{display:block}
+.pcard .ptag,.pcard .pnum,.pcard p{margin-left:1.5rem;margin-right:1.5rem}
+.pcard .ptag{display:inline-block;margin-top:1.7rem;font-family:var(--label);font-weight:600;font-size:16px;letter-spacing:.17em;text-transform:uppercase;color:#6E6A62}
+.pcard .pnum{display:block;font-family:'Playfair Display',serif;font-weight:400;font-size:3.1rem;line-height:1;margin-top:.7rem;margin-bottom:.9rem}
+.pcard p{font-size:.94rem;color:#55524C;padding-bottom:1.9rem}
+.pcard.feature{background:var(--ink);border-color:rgba(24,24,28,.2)}
+.pcard.feature .pnum{color:var(--paper)}
+.pcard.feature .ptag{color:var(--lav)}
+.pcard.feature p{color:rgba(253,251,247,.66)}
+.ship{margin-top:2.4rem;max-width:62ch;font-size:.95rem;color:#55524C}
+.ship b{font-weight:400;color:var(--ink)}
+@media (max-width:960px){.price-grid{grid-template-columns:1fr}}
 
 
 /* ---------- lightbox ---------- */
@@ -396,21 +425,21 @@ footer a:hover{color:var(--paper)}
     </div>
     <div class="grid">
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g1.jpg" alt="Yellow starburst string art on purple"></div></div>
-        <figcaption><b>Solar Bloom</b><span class="sold">98 cm &middot; Private collection</span></figcaption></figure>
+        <figcaption><b>Solar Bloom</b><span class="sold">98 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple and amber mandala string art"></div></div>
-        <figcaption><b>Purple Dawn</b><span class="sold">98 cm &middot; Artist's collection</span></figcaption></figure>
+        <figcaption><b>Purple Dawn</b><span class="sold">98 cm <span class="statusrow">&middot; Artist's collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g3.jpg" alt="Dense monochrome silver string art"></div></div>
-        <figcaption><b>Interstellar</b><span class="sold">85 cm &middot; Private collection</span></figcaption></figure>
+        <figcaption><b>Interstellar</b><span class="sold">85 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g4.jpg" alt="Deep green string art"></div></div>
-        <figcaption><b>Emerald Ripple</b><span class="sold">120 cm &middot; Private collection</span></figcaption></figure>
+        <figcaption><b>Emerald Ripple</b><span class="sold">120 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g5.jpg" alt="Lilac Vortex, all-purple string art"></div></div>
-        <figcaption><b>Lilac Vortex</b><span class="sold">76 cm &middot; Available</span></figcaption></figure>
+        <figcaption><b>Lilac Vortex</b><span class="sold">76 cm <span class="statusrow">&middot; Available</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g6.jpg" alt="Blue petal-pattern string art"></div></div>
-        <figcaption><b>Blue Meridian</b><span class="sold">75 cm &middot; Private collection</span></figcaption></figure>
+        <figcaption><b>Blue Meridian</b><span class="sold">75 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
-        <figcaption><b>Jungle Halo</b><span class="sold">63 cm &middot; Available</span></figcaption></figure>
+        <figcaption><b>Jungle Halo</b><span class="sold">63 cm <span class="statusrow">&middot; Available</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g8.jpg" alt="Cosmic Spiral, string art in burgundy, blue, orange and white"></div></div>
-        <figcaption><b>Cosmic Spiral</b><span class="sold">75 cm &middot; Private collection</span></figcaption></figure>
+        <figcaption><b>Cosmic Spiral</b><span class="sold">75 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -423,15 +452,10 @@ footer a:hover{color:var(--paper)}
       <p class="sub">Jad Okaily works from a studio in Beirut. The thread travels around nails set into the frame of a panel, never inside it, and the pattern emerges where the straight lines cross one another.</p>
       <p class="sub" style="margin-top:1rem">No machine is involved at any stage. Every work is wound by hand, nail by nail, and the studio produces a small number of works each week.</p>
       <blockquote>&ldquo;I unravel more than I keep.&rdquo;<span style="display:block;font-family:var(--label);font-weight:500;font-style:normal;font-size:1.02rem;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem">Jad Okaily</span></blockquote>
-      <div class="facts">
-        <div class="fact"><b>1</b><span>Thread per colour</span></div>
-        <div class="fact"><b>0</b><span>Nails inside</span></div>
-        <div class="fact"><b>Any</b><span>Size or shape</span></div>
-      </div>
     </div>
     <div class="rv artistpix">
       <div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/portrait_jad.jpg" alt="Jad Okaily, portrait"></div></div>
-      <div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/maker.jpg" alt="Jad Okaily holding Jungle Halo"></div></div>
+      <div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/maker_og.jpg" alt="Jad Okaily holding Olive Garden"></div></div>
     </div>
   </div>
 </section>
@@ -550,10 +574,13 @@ footer a:hover{color:var(--paper)}
   document.querySelectorAll('.grid figure').forEach(function(f){
     var i=f.querySelector('img'), b=f.querySelector('figcaption b'), sp=f.querySelector('figcaption span');
     if(!i) return;
-    i.addEventListener('click',function(){ open(i.src,i.alt,b?b.textContent:'',sp?sp.textContent:''); });
+    i.addEventListener('click',function(){
+      var mt='';
+      if(sp){ var c=sp.cloneNode(true), st=c.querySelector('.statusrow'); if(st) c.removeChild(st); mt=c.textContent.trim(); }
+      open(i.src,i.alt,b?b.textContent:'',mt); });
   });
   var hero=document.querySelector('.hero-media img');
-  if(hero) hero.addEventListener('click',function(){ open(hero.src,hero.alt,'Cosmic Spiral','75 cm · Private collection'); });
+  if(hero) hero.addEventListener('click',function(){ open(hero.src,hero.alt,'Cosmic Spiral','75 cm')  /* status hidden 2026-09-22; was '75 cm · Private collection' */; });
   x.addEventListener('click',close);
   lb.addEventListener('click',function(e){ if(e.target===lb||e.target.tagName==='FIGURE') close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
