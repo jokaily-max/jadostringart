@@ -225,6 +225,18 @@ h2 em{font-style:italic;color:#6E5EA0}
 }
 /* The holding photo is wider than 3/4; anchor it right so the whole piece stays in frame. */
 .artistpix img[src$="maker_og.jpg"]{object-position:right center}
+/* 2026-09-29 (Jad): on desktop the two pictures run exactly as tall as the text column,
+   top of the eyebrow down to the name under the quote. The pictures are taken out of
+   the height calculation (absolute inside .core), so the text alone sets the row height
+   and the pictures stretch to fill it. Phones and tablets keep the 3/4 frames. */
+@media (min-width:1000px){
+  .story .split{align-items:stretch}
+  .story .artistpix{align-items:stretch}
+  .story .artistpix > .shell{display:flex}
+  .story .artistpix > .shell .core{aspect-ratio:auto;flex:1;position:relative;min-height:0}
+  .story .artistpix > .shell .core img{position:absolute;inset:0}
+}
+.artistpix img[src$="maker_gl.jpg"]{object-position:center 60%}
 /* Hold the reading line at a sane measure, but let the three facts run the
    full width so they read as a spec bar above the photographs. */
 .story .split > .rv:first-child > h2,
@@ -455,7 +467,7 @@ footer a:hover{color:var(--paper)}
     </div>
     <div class="rv artistpix">
       <div class="shell"><div class="core tall"><img loading="lazy" decoding="async" src="img/portrait_jad.jpg" alt="Jad Okaily, portrait"></div></div>
-      <div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/maker_og.jpg" alt="Jad Okaily holding Olive Garden"></div></div>
+      <div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/maker_gl.jpg" alt="Jad Okaily with Giardino di Luce"></div></div>
     </div>
   </div>
 </section>
