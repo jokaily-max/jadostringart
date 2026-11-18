@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jado String Art | Handmade string art, Beirut</title>
-<meta name="description" content="Handmade string art from Beirut. Nails only on the frame, nothing inside it. Works made to order in any size, shape and palette, shipped worldwide.">
+<meta name="description" content="Handmade string art from Beirut. Every curve is a straight line. Made to order in your size and colours, shipped worldwide. Pieces from $100.">
 <meta property="og:title" content="Jado String Art">
-<meta property="og:description" content="Nails only on the frame, nothing inside it. Handmade in Beirut, shipped worldwide.">
+<meta property="og:description" content="Every curve is a straight line. Handmade string art from Beirut, made to order and shipped worldwide.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jadostringart.com/">
 <meta property="og:image" content="https://jadostringart.com/img/hero.jpg">
@@ -183,9 +183,10 @@ figcaption{
 }
 figcaption b{font-weight:600;color:var(--ink);font-family:var(--label);font-size:1.42rem;letter-spacing:.13em}
 .sold{color:var(--muted)}
-/* STATUS LINE, HIDDEN 2026-09-22 on Jad's instruction. The text is still in the
-   markup. To bring every status back, delete the ONE rule on the next line. */
-.statusrow{display:none}
+/* Works grid only, 2026-11-18: name on top, "size · status · price" on its own line under it. */
+#work figcaption{flex-direction:column;align-items:flex-start;gap:.3rem}
+/* STATUS LINE: hidden 2026-09-22, shown again 2026-11-18 under the approved
+   website plan (status and price under each home work). */
 
 
 h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.05;letter-spacing:-.015em}
@@ -309,6 +310,7 @@ blockquote{
 .btn.dark{background:var(--ink);color:var(--paper)}
 .btn.dark .ic{background:rgba(253,251,247,.14)}
 .btn.dark:hover .ic{background:rgba(253,251,247,.22)}
+.morerow{margin-top:clamp(2rem,4vw,3rem);display:flex;justify-content:center}
 .btnrow{margin-top:3rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .note{font-size:.83rem;color:rgba(253,251,247,.5)}
 
@@ -416,8 +418,8 @@ footer a:hover{color:var(--paper)}
   <div class="hero-copy">
     <img class="logo-top" src="img/logo.png" alt="Jado String Art">
     <span class="eyebrow">Studio, Beirut</span>
-    <h1>Built from<br><em>the Edge</em></h1>
-    <p class="lede">Nails only on the frame.<br>Nothing inside it.<br>Every curve you think you see is made of straight lines.</p>
+    <h1>Every curve is<br><em>a straight line.</em></h1>
+    <p class="lede">Handmade string art from a studio in Beirut.<br>Made to order in your size and colours.</p>
     <div class="btnrow">
       <a class="btn" href="#order">Commission my piece <span class="ic">&#8599;</span></a>
       <span class="note">Made to order &middot; shipped worldwide</span>
@@ -433,30 +435,23 @@ footer a:hover{color:var(--paper)}
     <div class="head rv">
       <span class="eyebrow dark">Selected works</span>
       <h2>Works from the <em>studio</em>.</h2>
-      <p class="sub">Each work is wound entirely by hand around nails set into the frame of a panel. A single-colour work is one unbroken thread from the first nail to the last; every additional colour adds a thread. Size, shape, palette and frame finish are determined at commission.</p>
+      <p class="sub">Each work is wound entirely by hand, and any of them can be made to order in your size and colours. A single-colour work is one unbroken thread from the first nail to the last; every additional colour adds a thread. Size, shape, palette and frame finish are determined at commission.</p>
     </div>
     <div class="grid">
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g1.jpg" alt="Yellow starburst string art on purple"></div></div>
-        <figcaption><b>Solar Bloom</b><span class="sold">98 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple and amber mandala string art"></div></div>
-        <figcaption><b>Purple Dawn</b><span class="sold">98 cm <span class="statusrow">&middot; Artist's collection</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g3.jpg" alt="Dense monochrome silver string art"></div></div>
-        <figcaption><b>Interstellar</b><span class="sold">85 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g4.jpg" alt="Deep green string art"></div></div>
-        <figcaption><b>Emerald Ripple</b><span class="sold">120 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g5.jpg" alt="Lilac Vortex, all-purple string art"></div></div>
-        <figcaption><b>Lilac Vortex</b><span class="sold">76 cm <span class="statusrow">&middot; Available</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g6.jpg" alt="Blue petal-pattern string art"></div></div>
-        <figcaption><b>Blue Meridian</b><span class="sold">75 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
-        <figcaption><b>Jungle Halo</b><span class="sold">63 cm <span class="statusrow">&middot; Available</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g8.jpg" alt="Cosmic Spiral, string art in burgundy, blue, orange and white"></div></div>
-        <figcaption><b>Cosmic Spiral</b><span class="sold">75 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
-      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g9.jpg" alt="Olive Garden, string art in shades of green and cream on a natural wood frame"></div></div>
-        <figcaption><b>Olive Garden</b><span class="sold">63 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
+        <figcaption><b>Lilac Vortex</b><span class="sold">76 cm <span class="statusrow">&middot; Ready now &middot; $200</span></span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple Dawn, purple and amber string art"></div></div>
+        <figcaption><b>Purple Dawn</b><span class="sold">98 cm <span class="statusrow">&middot; Ready now &middot; $400</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g10.jpg" alt="Giardino di Luce, string art in green, gold and blue on a deep brown frame"></div></div>
-        <figcaption><b>Giardino di Luce</b><span class="sold">90 cm <span class="statusrow">&middot; Private collection</span></span></figcaption></figure>
+        <figcaption><b>Giardino di Luce</b><span class="sold">90 cm <span class="statusrow">&middot; Made to order &middot; $600</span></span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
+        <figcaption><b>Jungle Halo</b><span class="sold">63 cm <span class="statusrow">&middot; Made to order &middot; $250</span></span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g8.jpg" alt="Cosmic Spiral, string art in burgundy, blue, orange and white"></div></div>
+        <figcaption><b>Cosmic Spiral</b><span class="sold">75 cm <span class="statusrow">&middot; Made to order &middot; $300</span></span></figcaption></figure>
+      <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g6.jpg" alt="Blue Meridian, blue petal pattern string art"></div></div>
+        <figcaption><b>Blue Meridian</b><span class="sold">75 cm <span class="statusrow">&middot; Made to order &middot; $100</span></span></figcaption></figure>
     </div>
+    <div class="morerow"><a class="btn dark" href="catalogue.html">See all 11 works and prices <span class="ic">&#8599;</span></a></div>
   </div>
 </section>
 
@@ -465,7 +460,7 @@ footer a:hover{color:var(--paper)}
     <div class="rv">
       <span class="eyebrow dark">The Artist</span>
       <h2>Meet the artist <em>behind the thread</em>.</h2>
-      <p class="sub">Jad Okaily works from a studio in Beirut. The thread travels around nails set into the frame of a panel, never inside it, and the pattern emerges where the straight lines cross one another.</p>
+      <p class="sub">Jad Okaily works from a studio in Beirut. The thread is pulled straight from nail to nail, and the pattern emerges where the lines cross one another.</p>
       <p class="sub" style="margin-top:1rem">No machine is involved at any stage. Every work is wound by hand, nail by nail, and the studio produces a small number of works each week.</p>
       <blockquote>&ldquo;I unravel more than I keep.&rdquo;<span style="display:block;font-family:var(--label);font-weight:500;font-style:normal;font-size:1.02rem;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem">Jad Okaily</span></blockquote>
     </div>
@@ -483,6 +478,7 @@ footer a:hover{color:var(--paper)}
       <span class="eyebrow">Enquiries</span>
       <h2>Begin a <em>commission</em>.</h2>
       <p class="sub">Any size, any shape, any palette. Every work is made to order in the Beirut studio and shipped worldwide. A reply follows within 24 hours.</p>
+      <p class="sub" style="margin-top:.8rem">Pieces from $100. Frame included. Shipping quoted separately.</p>
     </div>
     <div class="steps">
       <div class="step rv"><i>01</i><b>Enquiry</b><p>Share the wall, the dimensions and the palette. A photograph of the space is the single most useful thing to send.</p></div>
@@ -596,10 +592,19 @@ footer a:hover{color:var(--paper)}
       open(i.src,i.alt,b?b.textContent:'',mt); });
   });
   var hero=document.querySelector('.hero-media img');
-  if(hero) hero.addEventListener('click',function(){ open(hero.src,hero.alt,'Cosmic Spiral','75 cm')  /* status hidden 2026-09-22; was '75 cm · Private collection' */; });
+  if(hero) hero.addEventListener('click',function(){ open(hero.src,hero.alt,'Cosmic Spiral','75 cm')  /* status hidden 2026-09-22; was the old status label */; });
   x.addEventListener('click',close);
   lb.addEventListener('click',function(e){ if(e.target===lb||e.target.tagName==='FIGURE') close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+
+/* ---- "Enquire about this piece": index.html?piece=Name#enquire prefills the message ---- */
+(function(){
+  var ok=['Lilac Vortex','Purple Dawn','Jungle Halo','Olive Garden','Giardino di Luce','Emerald Ripple','Eye of the Forest','Interstellar','Solar Bloom','Cosmic Spiral','Blue Meridian'];
+  var m=/[?&]piece=([^&#]*)/.exec(location.search); if(!m) return;
+  var name; try{name=decodeURIComponent(m[1].replace(/\+/g,' '))}catch(e){return}
+  if(ok.indexOf(name)<0) return;
+  var t=document.getElementById('f-msg'); if(t && !t.value) t.value='I would like to enquire about '+name+'. ';
 })();
 </script>
 </body></html>
