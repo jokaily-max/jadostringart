@@ -97,7 +97,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:
 .island{
   pointer-events:auto; margin-top:1.4rem; width:max-content; display:flex; align-items:center; gap:.35rem;
   padding:.4rem; border-radius:999px;
-  background:rgba(253,251,247,.72); backdrop-filter:blur(22px) saturate(1.4);
+  background:rgba(253,251,247,.92); backdrop-filter:blur(22px) saturate(1.4);
   -webkit-backdrop-filter:blur(22px) saturate(1.4);
   box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 12px 40px -18px rgba(24,24,28,.42);
   border:1px solid rgba(24,24,28,.09);
@@ -185,6 +185,8 @@ figcaption b{font-weight:600;color:var(--ink);font-family:var(--label);font-size
 .sold{color:var(--muted)}
 /* Works grid only, 2026-11-18: name on top, "size · status · price" on its own line under it. */
 #work figcaption{flex-direction:column;align-items:flex-start;gap:.3rem}
+/* 2026-11-20 design audit: size, status and price line darker and larger (was 12.6px at contrast 3.63). */
+#work figcaption .sold{color:#5F5A51;font-size:.94rem;letter-spacing:.08em;font-weight:400}
 /* STATUS LINE: hidden 2026-09-22, shown again 2026-11-18 under the approved
    website plan (status and price under each home work). */
 
@@ -391,6 +393,16 @@ footer a:hover{color:var(--paper)}
   .island .full{display:none}
   .island .mini{display:inline}
 }
+/* 2026-11-20 design audit: on phones the artwork sits in the first screen, above the name and headline. Scoped to the hero only. */
+@media (max-width:680px){
+  .hero{padding-top:5.4rem}
+  .hero .wrap{gap:1.3rem}
+  .hero-media{order:-1;margin-top:0;width:62vw;max-width:300px;margin-left:auto;margin-right:auto}
+  .hero .logo-top{width:150px;margin:0 auto 1.1rem}
+  .hero .eyebrow{display:block;width:max-content;margin:0 auto 1rem}
+  .hero h1{font-size:2.5rem}
+  .hero .lede{margin-top:1.2rem}
+}
 @media (max-width:390px){
   .island{gap:.12rem;padding:.28rem}
   .island a{padding:.48rem .5rem;font-size:.6rem}
@@ -443,7 +455,7 @@ footer a:hover{color:var(--paper)}
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g2.jpg" alt="Purple Dawn, purple and amber string art"></div></div>
         <figcaption><b>Purple Dawn</b><span class="sold">98 cm <span class="statusrow">&middot; Ready now &middot; $400</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g10.jpg" alt="Giardino di Luce, string art in green, gold and blue on a deep brown frame"></div></div>
-        <figcaption><b>Giardino di Luce</b><span class="sold">90 cm <span class="statusrow">&middot; Made to order &middot; $600</span></span></figcaption></figure>
+        <figcaption><b>Giardino di Luce</b><span class="sold">105 cm <span class="statusrow">&middot; Made to order &middot; $600</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g7.jpg" alt="Jungle Halo, string art in shades of green on a deep burgundy frame"></div></div>
         <figcaption><b>Jungle Halo</b><span class="sold">63 cm <span class="statusrow">&middot; Made to order &middot; $250</span></span></figcaption></figure>
       <figure class="c6 rv"><div class="shell"><div class="core sq"><img loading="lazy" decoding="async" src="img/g8.jpg" alt="Cosmic Spiral, string art in burgundy, blue, orange and white"></div></div>
